@@ -64,19 +64,6 @@ JUnit/Mockito: For unit and integration testing.
 Lombok: To simplify Java code.
 Maven: Build and dependency management
 
-## 📂 Project Structure
-
-src/main
-├── java/com/example/insuranceappsecure
-│   ├── controller      # Controllers for handling requests
-│   ├── service         # Business logic
-│   ├── repository      # Data access layer
-│   ├── model           # Entity classes
-│   └── security        # Security configurations
-├── resources
-│   ├── static          # Static assets
-│   ├── templates       # JSP files (views)
-│   └── application.yml # Application configuration
 
 
 ## 📜 License
