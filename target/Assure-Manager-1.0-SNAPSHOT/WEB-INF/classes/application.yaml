@@ -12,13 +12,13 @@ spring:
       ddl-auto: update
     show-sql: true
 
-  # Configuration de la gestion des sessions
-  session:
-    timeout: 30m  # Durée de vie de la session (ici 30 minutes)
 
-  # Gestion de l'encoding
+  session:
+    timeout: 30m
+
+
   messages:
-    encoding: UTF-8  # Assurez-vous que les messages sont bien encodés en UTF-8
+    encoding:
 
 logging:
   level:
@@ -45,3 +45,7 @@ management:
         include: "*"
   health:
     enabled: true
+
+security:
+  session:
+    create-session: always

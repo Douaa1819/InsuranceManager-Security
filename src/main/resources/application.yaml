@@ -45,3 +45,7 @@ management:
         include: "*"
   health:
     enabled: true
+
+security:
+  session:
+    create-session: always

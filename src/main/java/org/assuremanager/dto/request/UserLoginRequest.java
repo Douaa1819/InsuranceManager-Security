@@ -1,22 +1,10 @@
-package org.assuremanager.dto.request;
+    package org.assuremanager.dto.request;
 
-public class UserLoginRequest {
+    public record UserLoginRequest (
 
-    private String email;
-    private String password;
-    public String getEmail() {
-        return email;
+        String username,
+        String password
+        )
+    {
+
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-}

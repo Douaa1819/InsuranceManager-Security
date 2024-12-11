@@ -29,8 +29,8 @@
             </div>
 
             <div class="mt-4">
-                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="email">Email Address</label>
-                <input id="email" name="email" required
+                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="username">Username:</label>
+                <input id="username" name="username" required
                        class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg
                           dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600
                           focus:border-blue-400 focus:ring-opacity-40
