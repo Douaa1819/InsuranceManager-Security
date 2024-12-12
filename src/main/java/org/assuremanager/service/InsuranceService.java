@@ -21,71 +21,71 @@ import org.springframework.stereotype.Service;
 public class InsuranceService {
 
 
-    private final HealthInsuranceRepository healthInsuranceRepository;
+//    private final HealthInsuranceRepository healthInsuranceRepository;
+//
+//    private final HomeInsuranceRepository homeInsuranceRepository;
+//
+//    private final CarInsuranceRepository carInsuranceRepository;
+//
+//    private  final InsuranceMapper mapper;
 
-    private final HomeInsuranceRepository homeInsuranceRepository;
-
-    private final CarInsuranceRepository carInsuranceRepository;
-
-    private  final InsuranceMapper mapper;
-
-    @Autowired
-    public InsuranceService(InsuranceMapper mapper,HealthInsuranceRepository healthInsuranceRepository,HomeInsuranceRepository homeInsuranceRepository,CarInsuranceRepository carInsuranceRepository) {
-        this.mapper = mapper;
-        this.healthInsuranceRepository = healthInsuranceRepository;
-        this.homeInsuranceRepository = homeInsuranceRepository;
-        this.carInsuranceRepository = carInsuranceRepository;
-    }
-
-
-    public HealthInsuranceDto addHealthInsurance(HealthInsuranceRequest dto) {
-        HealthInsurance healthInsurance = mapper.toEntity(dto);
-        HealthInsurance saved = healthInsuranceRepository.save(healthInsurance);
-        return mapper.toResponseDTO(saved);
-    }
-
-
-
-    public HomeInsuranceDto addHomeInsurance(HomeInsuranceRequest dto) {
-        HomeInsurance homeInsurance = mapper.toEntity(dto);
-        HomeInsurance saved = homeInsuranceRepository.save(homeInsurance);
-        return mapper.toResponseDTO(saved);
-    }
-
-
-    public CarInsuranceDto addCarInsurance(CarInsuranceRequest dto) {
-        CarInsurance carInsurance = mapper.toEntity(dto);
-        CarInsurance saved = carInsuranceRepository.save(carInsurance);
-        return mapper.toResponseDTO(saved);
-    }
-
-    public double calculateHomeInsuranceCost(HomeInsuranceRequest dto) {
-        double basePrice = 300.0;
-
-        // +2 % si propoperty type est une maison
-        if (dto.getPropertyType() == PropertyType.HOME) {
-            basePrice += basePrice * 0.02;
-        }
-
-        // +5 % si le logement est situé dans une zone à risque
-        if (dto.isRisqueZone()) {
-            basePrice += basePrice * 0.05;
-        }
-
-        // +10 % si la valeur du bien dépasse 200 000 MAD
-        if (dto.getPropertyValue() > 200000) {
-            basePrice += basePrice * 0.10;
-        }
-
-        // -15 % si l'assuré dispose d'un système de sécurité, +15 % sinon
-        if ("yes".equalsIgnoreCase(dto.getSecuritySystem())) {
-            basePrice -= basePrice * 0.15;
-        } else {
-            basePrice += basePrice * 0.15;
-        }
-
-        return basePrice;
-    }
+//    @Autowired
+//    public InsuranceService(HealthInsuranceRepository healthInsuranceRepository,HomeInsuranceRepository homeInsuranceRepository,CarInsuranceRepository carInsuranceRepository) {
+//
+//        this.healthInsuranceRepository = healthInsuranceRepository;
+//        this.homeInsuranceRepository = homeInsuranceRepository;
+//        this.carInsuranceRepository = carInsuranceRepository;
+//    }
+//
+//
+//    public HealthInsuranceDto addHealthInsurance(HealthInsuranceRequest dto) {
+//        HealthInsurance healthInsurance = mapper.toEntity(dto);
+//        HealthInsurance saved = healthInsuranceRepository.save(healthInsurance);
+//        return mapper.toResponseDTO(saved);
+//    }
+//
+//
+//
+//    public HomeInsuranceDto addHomeInsurance(HomeInsuranceRequest dto) {
+//        HomeInsurance homeInsurance = mapper.toEntity(dto);
+//        HomeInsurance saved = homeInsuranceRepository.save(homeInsurance);
+//        return mapper.toResponseDTO(saved);
+//    }
+//
+//
+//    public CarInsuranceDto addCarInsurance(CarInsuranceRequest dto) {
+//        CarInsurance carInsurance = mapper.toEntity(dto);
+//        CarInsurance saved = carInsuranceRepository.save(carInsurance);
+//        return mapper.toResponseDTO(saved);
+//    }
+//
+//    public double calculateHomeInsuranceCost(HomeInsuranceRequest dto) {
+//        double basePrice = 300.0;
+//
+//        // +2 % si propoperty type est une maison
+//        if (dto.getPropertyType() == PropertyType.HOME) {
+//            basePrice += basePrice * 0.02;
+//        }
+//
+//        // +5 % si le logement est situé dans une zone à risque
+//        if (dto.isRisqueZone()) {
+//            basePrice += basePrice * 0.05;
+//        }
+//
+//        // +10 % si la valeur du bien dépasse 200 000 MAD
+//        if (dto.getPropertyValue() > 200000) {
+//            basePrice += basePrice * 0.10;
+//        }
+//
+//        // -15 % si l'assuré dispose d'un système de sécurité, +15 % sinon
+//        if ("yes".equalsIgnoreCase(dto.getSecuritySystem())) {
+//            basePrice -= basePrice * 0.15;
+//        } else {
+//            basePrice += basePrice * 0.15;
+//        }
+//
+//        return basePrice;
+//    }
 }
 
 

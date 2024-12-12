@@ -10,7 +10,9 @@ import org.assuremanager.model.CarInsurance;
 import org.assuremanager.model.HealthInsurance;
 import org.assuremanager.model.HomeInsurance;
 import org.mapstruct.Mapper;
-@Mapper(componentModel = "spring")
+import org.springframework.stereotype.Component;
+
+@Component
 public interface InsuranceMapper {
 
     // HealthInsurance Mappings

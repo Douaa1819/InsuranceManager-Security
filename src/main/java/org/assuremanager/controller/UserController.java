@@ -2,8 +2,10 @@ package org.assuremanager.controller;
 
 import org.assuremanager.dto.request.UserLoginRequest;
 import org.assuremanager.dto.request.UserRegisterRequest;
+import org.assuremanager.model.Role;
 import org.assuremanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,7 @@ public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public UserController(@Qualifier("userDetailsServiceImpl") UserService userService) {
         this.userService = userService;
     }
 
@@ -28,17 +30,13 @@ public class UserController {
     @GetMapping("/register")
     public ModelAndView showRegistrationForm() {
         ModelAndView modelAndView = new ModelAndView("auth/register");
-        modelAndView.addObject("userRegisterRequest", new UserRegisterRequest("", "", "", "", ""));
+        modelAndView.addObject("userRegisterRequest", new UserRegisterRequest("", "", Role.ROLE_USER ));
         return modelAndView;
     }
 
 
     @PostMapping("/register")
     public String register(@ModelAttribute UserRegisterRequest userRegisterRequest, Model model) {
-        if (userService.isEmailExists(userRegisterRequest.email())) {
-            model.addAttribute("error", "Email already in use.");
-            return "register";
-        }
 
         userService.register(userRegisterRequest);
         return "redirect:/login";

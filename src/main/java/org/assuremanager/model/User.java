@@ -11,17 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Table(name = "users")
-
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String email;
+    private String username;
 
-    @Column(nullable = false)
-    private String name;
 
     @Column(nullable = false)
     private String password;
@@ -30,9 +27,4 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
-    @Column(nullable = false)
-    private String address;
-
-    @Column(name = "phone_number", nullable = false, unique = true)
-    private String phoneNumber;
 }

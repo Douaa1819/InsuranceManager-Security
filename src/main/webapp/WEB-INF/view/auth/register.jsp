@@ -15,29 +15,16 @@
             <i class="fas fa-user-plus"></i> Register
         </h2>
 
-        <form action="/register" method="POST" class="mt-4" onsubmit="return validateForm()">
+        <form action="/register" method="POST" class="mt-4">
 
             <div class="mt-4">
-                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="name">Name</label>
-                <input id="name" name="name" required
-                       class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg
-                          dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600
-                          focus:border-blue-400 focus:ring-opacity-40
-                          dark:focus:border-blue-300 focus:outline-none focus:ring
-                          focus:ring-blue-300"
+                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="username">Name</label>
+
+                <input id="username" name="username" required
+                       class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg"
                        type="text" placeholder="Enter your name" />
             </div>
 
-            <div class="mt-4">
-                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="username">Username:</label>
-                <input id="username" name="username" required
-                       class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg
-                          dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600
-                          focus:border-blue-400 focus:ring-opacity-40
-                          dark:focus:border-blue-300 focus:outline-none focus:ring
-                          focus:ring-blue-300"
-                       type="email" placeholder="Enter your email" />
-            </div>
 
             <div class="mt-4">
                 <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="password">Password</label>
@@ -77,21 +64,6 @@
     </div>
 </div>
 
-<script>
-    function validateForm() {
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm-password").value;
-        const passwordStrength = document.getElementById("password-strength");
 
-        if (password !== confirmPassword) {
-            passwordStrength.classList.remove("hidden");
-            passwordStrength.textContent = "Passwords do not match!";
-            return false;
-        } else {
-            passwordStrength.classList.add("hidden");
-        }
-        return true;
-    }
-</script>
 </body>
 </html>

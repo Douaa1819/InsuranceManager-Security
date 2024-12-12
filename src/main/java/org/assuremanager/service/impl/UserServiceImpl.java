@@ -1,5 +1,7 @@
 package org.assuremanager.service.impl;
 
+import jakarta.transaction.Transactional;
+import org.assuremanager.model.Role;
 import org.assuremanager.model.User;
 import org.assuremanager.repository.UserRepository;
 import org.assuremanager.dto.request.UserRegisterRequest;
@@ -11,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+@Transactional
 @Service("userDetailsServiceImpl")
 public class UserServiceImpl implements UserService {
 
@@ -24,28 +27,30 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
     }
-
     @Override
     public void register(UserRegisterRequest request) {
-        if (userRepository.existsByEmail(request.email())) {
-            throw new IllegalArgumentException("Email already in use.");
-        }
-        User user = userMapper.toEntity(request);
 
+        User user = userMapper.toEntity(request);
         user.setPassword(passwordEncoder.encode(request.password()));
+
+//
+//        if (user.getRole() == null) {
+//            user.setRole(Role.ROLE_USER);
+//        }
+//if(user.getUsername()==null){
+//    user.setUsername("test");
+//
+//}
+
         userRepository.save(user);
     }
 
-    @Override
-    public boolean isEmailExists(String email) {
-        return userRepository.existsByEmail(email);
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByName(username)
+        return userRepository.findByUsername(username)
                 .map(user -> org.springframework.security.core.userdetails.User.builder()
-                        .username(user.getName())
+                        .username(user.getUsername())
                         .password(user.getPassword())
                         .roles(user.getRole().name())
                         .build())
