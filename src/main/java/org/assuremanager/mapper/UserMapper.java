@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    @Mapping(target = "role", constant = "ROLE_USER")
+//    @Mapping(target = "role", constant = "ROLE_USER")
     User toEntity(UserRegisterRequest dto);
 
     UserResponseDto toDto(User entity);

@@ -44,7 +44,6 @@ public class UserController {
         return "redirect:/login";
     }
 
-    // Affiche le formulaire de connexion
     @GetMapping("/login")
     public ModelAndView showLoginForm() {
         ModelAndView modelAndView = new ModelAndView("/auth/login");

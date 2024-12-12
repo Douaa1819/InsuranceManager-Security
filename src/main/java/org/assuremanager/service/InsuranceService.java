@@ -20,14 +20,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class InsuranceService {
 
+
+    private final HealthInsuranceRepository healthInsuranceRepository;
+
+    private final HomeInsuranceRepository homeInsuranceRepository;
+
+    private final CarInsuranceRepository carInsuranceRepository;
+
+    private  final InsuranceMapper mapper;
+
     @Autowired
-    private HealthInsuranceRepository healthInsuranceRepository;
-    @Autowired
-    private HomeInsuranceRepository homeInsuranceRepository;
-    @Autowired
-    private CarInsuranceRepository carInsuranceRepository;
-    @Autowired
-    private InsuranceMapper mapper;
+    public InsuranceService(InsuranceMapper mapper,HealthInsuranceRepository healthInsuranceRepository,HomeInsuranceRepository homeInsuranceRepository,CarInsuranceRepository carInsuranceRepository) {
+        this.mapper = mapper;
+        this.healthInsuranceRepository = healthInsuranceRepository;
+        this.homeInsuranceRepository = homeInsuranceRepository;
+        this.carInsuranceRepository = carInsuranceRepository;
+    }
 
 
     public HealthInsuranceDto addHealthInsurance(HealthInsuranceRequest dto) {

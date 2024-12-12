@@ -10,7 +10,6 @@ import org.assuremanager.model.CarInsurance;
 import org.assuremanager.model.HealthInsurance;
 import org.assuremanager.model.HomeInsurance;
 import org.mapstruct.Mapper;
-
 @Mapper(componentModel = "spring")
 public interface InsuranceMapper {
 

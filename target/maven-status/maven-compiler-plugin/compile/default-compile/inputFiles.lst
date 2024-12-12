@@ -32,12 +32,13 @@ C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\model\Esti
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\model\HealthInsurance.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\model\HomeInsurance.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\model\Insurance.java
+C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\model\Role.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\model\User.java
+C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\model\UserActivity.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\repository\CarInsuranceRepository.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\repository\HealthInsuranceRepository.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\repository\HomeInsuranceRepository.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\repository\UserRepository.java
-C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\service\ContractService.java
-C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\service\EstimationService.java
+C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\service\impl\UserServiceImpl.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\service\InsuranceService.java
 C:\Users\ycode\Desktop\Assure-Manager\src\main\java\org\assuremanager\service\UserService.java

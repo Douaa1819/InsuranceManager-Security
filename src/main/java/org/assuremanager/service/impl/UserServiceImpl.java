@@ -5,20 +5,20 @@ import org.assuremanager.repository.UserRepository;
 import org.assuremanager.dto.request.UserRegisterRequest;
 import org.assuremanager.mapper.UserMapper;
 import org.assuremanager.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
-@Service
+@Service("userDetailsServiceImpl")
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserMapper userMapper;
 
+    @Autowired
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -42,24 +42,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
-    }
-
-    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> userOpt = userRepository.findByUsername(username);
-
-        if (userOpt.isEmpty()) {
-            throw new UsernameNotFoundException("User not found with username: " + username);
-        }
-
-        User user = userOpt.get();
-
-        return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getName())
-                .password(user.getPassword())
-                .roles(user.getRole().name())
-                .build();
+        return userRepository.findByName(username)
+                .map(user -> org.springframework.security.core.userdetails.User.builder()
+                        .username(user.getName())
+                        .password(user.getPassword())
+                        .roles(user.getRole().name())
+                        .build())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 }
+

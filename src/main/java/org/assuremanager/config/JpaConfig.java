@@ -27,7 +27,7 @@ public class JpaConfig {
         em.setPackagesToScan("org.assuremanager.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
-        // Additional JPA properties
+
         Properties jpaProperties = new Properties();
         jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
         jpaProperties.put("hibernate.hbm2ddl.auto", "update");
@@ -47,10 +47,10 @@ public class JpaConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver"); // Remplacez par le driver correspondant
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/insurance"); // Remplacez par votre URL
-        dataSource.setUsername("postgres"); // Remplacez par votre utilisateur
-        dataSource.setPassword("password"); // Remplacez par votre mot de passe
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/insurance");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("password");
         return dataSource;
     }
 
